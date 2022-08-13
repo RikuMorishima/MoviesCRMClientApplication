@@ -1,0 +1,27 @@
+<h1>Details</h1>
+<table>
+    <thead>
+        <tr>
+            <td>Title</td>
+            <td>Genre</td>
+            <td>Overview</td>
+            <td>Cast</td>
+            <td>Trailers</td>
+            <td>Rating</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of movieDetails" 
+        [ngClass]="{'success': m.rating >= 8,'warning': m.rating < 8 && m.rating > 7,'danger': m.rating <= 7}" >
+            <div *ngIf="showAll; else contentNotFound">
+            <td>{{m.title}}</td>
+            <td>{{m.genre}}</td>
+            <td>{{m.overview | concat }}</td>
+            <td>{{m.cast}}</td>
+            <td>{{m.trailers}}</td>
+            <td>{{m.rating}}</td>
+            </div>
+            <ng-template #contentNotFound></ng-template>
+        </tr>
+    </tbody>
+</table>

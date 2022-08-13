@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from 'src/app/shared/models/movie.service';
 
 @Component({
   selector: 'app-favorites',
