@@ -1,0 +1,21 @@
+<form #createCastForm="ngForm" (submit)="createCastSubmit(createCastForm)">
+    <div class="mb-3">
+        <label>Name</label>
+        <input title="name" type="text" name="name" placeholder="Name" [(ngModel)]="createCast.name" [required]="true" />
+    </div>
+    <div class="mb-3">
+        <label>Gender</label>
+        <input title="gender" type="text" name="gender" placeholder="Gender" [(ngModel)]="createCast.gender" required="true" />
+    </div>
+    <div class="mb-3">
+        <label>TmdbUrl</label>
+        <input title="tmdbUrl" type="text" name="tmdbUrl" placeholder="TmdbUrl" [(ngModel)]="createCast.tmdbUrl" />
+    </div>
+    <div class="mb-3">
+        <label>ProfilePath</label>
+        <input title="profilePath" type="text" name="profilePath" placeholder="ProfilePath" [(ngModel)]="createCast.profilePath" />
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>

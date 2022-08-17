@@ -1,0 +1,57 @@
+<form #createCastForm="ngForm" (submit)="createMovieSubmit(createCastForm)">
+    <div class="mb-3">
+        <label>Name</label>
+        <input title="name" type="text" name="name" placeholder="Name" [(ngModel)]="createMovie.title" required="true" />
+    </div>
+    <div class="mb-3">
+        <label>overview</label>
+        <input title="overview" type="text" name="overview" placeholder="overview" [(ngModel)]="createMovie.overview" />
+    </div>
+    <div class="mb-3">
+        <label>tagline</label>
+        <input title="tagline" type="text" name="tagline" placeholder="tagline" [(ngModel)]="createMovie.tagline" />
+    </div>
+    <div class="mb-3">
+        <label>budget</label>
+        <input title="budget" type="text" name="budget" placeholder="budget" [(ngModel)]="createMovie.budget" />
+    </div>
+    <div class="mb-3">
+        <label>revenue</label>
+        <input title="revenue" type="text" name="revenue" placeholder="revenue" [(ngModel)]="createMovie.revenue" />
+    </div>
+    <div class="mb-3">
+        <label>imdburl</label>
+        <input title="imdburl" type="text" name="imdburl" placeholder="imdburl" [(ngModel)]="createMovie.imdburl" />
+    </div>
+    <div class="mb-3">
+        <label>tmdburl</label>
+        <input title="tmdburl" type="text" name="tmdburl" placeholder="tmdburl" [(ngModel)]="createMovie.tmdburl" />
+    </div>
+    <div class="mb-3">
+        <label>posterurl</label>
+        <input title="posterurl" type="text" name="posterurl" placeholder="posterurl" [(ngModel)]="createMovie.posterurl" />
+    </div>
+    <div class="mb-3">
+        <label>backdropurl</label>
+        <input title="backdropurl" type="text" name="backdropurl" placeholder="backdropurl" [(ngModel)]="createMovie.backdropurl" />
+    </div>
+    <div class="mb-3">
+        <label>originallanguage</label>
+        <input title="originallanguage" type="text" name="originallanguage" placeholder="originallanguage" [(ngModel)]="createMovie.originallanguage" />
+    </div>
+    <div class="mb-3">
+        <label>releasedate</label>
+        <input title="releasedate" type="text" name="releasedate" placeholder="releasedate" [(ngModel)]="createMovie.releasedate" />
+    </div>
+    <div class="mb-3">
+        <label>runtime</label>
+        <input title="runtime" type="text" name="runtime" placeholder="runtime" [(ngModel)]="createMovie.runtime" />
+    </div>    
+    <div class="mb-3">
+        <label>price</label>
+        <input title="price" type="text" name="price" placeholder="price" [(ngModel)]="createMovie.price" />
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
