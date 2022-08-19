@@ -1,0 +1,22 @@
+import { Injectable } from '@angular/core';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor
+} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+
+@Injectable()
+export class ErrorHandlingInterceptor implements HttpInterceptor {
+
+  constructor(private toastr:ToastrService) {}
+
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    if (true) { // add logic for error messages
+      this.toastr.error('Error message','Error');
+    }
+    return next.handle(request);
+  }
+}
