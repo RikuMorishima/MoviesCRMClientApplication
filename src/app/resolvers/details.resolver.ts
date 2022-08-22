@@ -4,17 +4,37 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
+import { StringOrNumberOrDate } from '@swimlane/ngx-charts';
 import { Observable, of } from 'rxjs';
 import { MovieService } from '../shared/models/movie.service';
+
+export interface IMovieDetails {
+  title: string,
+  overview: string,
+  tagline: string,
+  budget: number,
+  revenue: number,
+  imdburl: string,
+  tmdburl: string,
+  posterurl: string,
+  backdropurl: string,
+  originallanguage: string,
+  releasedate:Date,
+  runtime: number, 
+  createddate:Date,
+  updatedDate: Date,
+  updatedby:string,
+  cratedby:string,
+}
 
 @Injectable({
   providedIn: 'root'
 })
-export class DetailsResolver implements Resolve<boolean> {
+export class DetailsResolver implements Resolve<IMovieDetails> {
 
   constructor(private movieService:MovieService){}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.movieService.getPurchasedMovies();
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IMovieDetails> {
+    return this.movieService.getMovieDetails();
   }
 }

@@ -15,4 +15,11 @@ export class MovieService {
       return data;
     });        
   }
+
+  getMovieDetails(id: number):any{
+    this.http.get('/movies/details/'+id).subscribe(data => {
+      // Read the result field from the JSON response.
+      return data;
+    });        
+  }
 }
