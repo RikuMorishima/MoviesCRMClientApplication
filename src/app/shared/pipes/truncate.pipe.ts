@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'concat'
+  name: 'truncate'
 })
-export class ConcatPipe implements PipeTransform {
+export class TruncatePipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): unknown {
     return value.substring(0,20);

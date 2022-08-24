@@ -1,5 +1,6 @@
 import { Component, OnInit, Pipe } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Movie } from 'src/app/interfaces/movies';
 
 @Component({
   selector: 'app-movie-details',
@@ -9,18 +10,28 @@ import { ActivatedRoute } from '@angular/router';
 export class MovieDetailsComponent implements OnInit {
 
   constructor(private ar: ActivatedRoute) {
-    this.ar.queryParams.subscribe(data=>{
-      console.log(data);
-      this.showAll =data['showAll'];
-    });
+
   }
 
   showAll:boolean = true;
+  showDetails:boolean = false;
 
   movieDetails:any; 
   movieRatingColor: Record<string,boolean> = {};
 
   ngOnInit(): void {
+    this.ar.queryParams.subscribe(data=>{
+      console.log(data["id"]);
+      this.showAll =data['showAll'];
+      if (data["id"]==undefined) {
+        this.showDetails = false;
+        // get movie list
+      } else {
+        this.showDetails=true;
+
+        // Get movie details
+      }
+    });
   }
 
   setColor(rating:number) {

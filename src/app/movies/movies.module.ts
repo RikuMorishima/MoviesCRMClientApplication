@@ -1,16 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from '../app.component';
-import { ConcatPipe } from '../shared/pipes/concat.pipe';
+import { TruncatePipe } from '../shared/pipes/truncate.pipe';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { MoviesRoutingModule } from './movies-routing.module';
 
 @NgModule({
     declarations: [
       MovieDetailsComponent,
-      ConcatPipe
+      TruncatePipe
     ],
     imports: [
-      BrowserModule
+      CommonModule,
+      MoviesRoutingModule
     ],
     providers: [],
     bootstrap: [AppComponent]

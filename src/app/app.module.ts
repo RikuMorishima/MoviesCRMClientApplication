@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
-import { ConcatPipe } from './shared/pipes/concat.pipe';
+import { TruncatePipe } from './shared/pipes/truncate.pipe';
 import { MoviesCreateComponent } from './core/movies/movies-create/movies-create.component';
 import { CreateMovieComponent } from './admin/create-movie/create-movie.component';
 import { CreateCastComponent } from './admin/create-cast/create-cast.component';
