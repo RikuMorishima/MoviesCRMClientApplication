@@ -8,4 +8,12 @@ import { ThisReceiver } from '@angular/compiler';
 })
 export class AppComponent {
   title = 'MovieCRMClientApplication';
+  constructor(){}
+
+  onStarted() {
+
+  }
+  onCompleted() {
+    
+  }
 }

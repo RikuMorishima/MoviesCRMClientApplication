@@ -13,10 +13,10 @@ import { FormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ToastrModule } from 'ngx-toastr';
-import { NgProgressModule } from 'ngx-progressbar';
+import { NgProgressComponent, NgProgressModule } from 'ngx-progressbar';
 import { ErrorHandlingInterceptor } from './interceptors/error-handling.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpProgressbarInterceptor } from './interceptors/http-progressbar.interceptor';
+import { HttpClient, HttpClientModule, HttpHandler, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ProgressBarInterceptor } from './interceptors/progress-bar.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AdminModule } from './admin/admin.module';
@@ -25,15 +25,17 @@ import { AdminModule } from './admin/admin.module';
   declarations: [
     AppComponent,
     PageNotFoundComponent,    
-
+    
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,    
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgProgressModule,
+    
     AdminModule,
     UserModule
   ],
@@ -41,8 +43,10 @@ import { AdminModule } from './admin/admin.module';
     {
       provide:HTTP_INTERCEPTORS, useClass:ErrorHandlingInterceptor, multi:true
     }, 
-    {provide: HTTP_INTERCEPTORS, useClass:HttpProgressbarInterceptor, multi:true}
-  ],
+    {provide: HTTP_INTERCEPTORS, useClass:ProgressBarInterceptor, multi:true},
+    HttpClient,
+    
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

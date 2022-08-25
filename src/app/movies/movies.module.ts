@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from '../app.component';
@@ -15,7 +16,8 @@ import { MoviesRoutingModule } from './movies-routing.module';
       CommonModule,
       MoviesRoutingModule
     ],
-    providers: [],
+    providers: [
+    ],
     bootstrap: [AppComponent]
   })
   export class MoviesModule { }

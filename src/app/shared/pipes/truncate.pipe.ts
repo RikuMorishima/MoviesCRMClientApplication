@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, ɵgetUnknownElementStrictMode } from '@angular/core';
 
 @Pipe({
   name: 'truncate'
@@ -6,7 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TruncatePipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): unknown {
+    if (value!=undefined) 
     return value.substring(0,20);
+    else return "N/A"
   }
 
 }

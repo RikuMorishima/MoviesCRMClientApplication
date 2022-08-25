@@ -25,6 +25,43 @@ export class MovieService {
     });        
   }
 
+  getAllMovies(){
+    console.log('Get all movies initiated')
+    // let output:Movie={
+    //   id: -1,
+    //   title: '',
+    //   overview:'',
+    //   tagline:'',
+    //   budget:-1,
+    //   revenue: -1,
+    //   imdbUrl:'',
+    //   tmdbUrl:'',
+    //   posterUrl:'',
+    //   backDropUrl:'',
+    //   originalLanguage:'', 
+    //   releaseDate:new Date,
+    //   runtime:-1,
+    //   price:-1,
+    //   createdDate:new Date,
+    //   updatedDate:new Date,
+    //   createdBy:'',
+    //   updatedBy:'',
+    //   casts: [],
+    //   genres: [],
+    //   Crews: [],
+    //   reviews: [],
+    //   purchases: [], 
+    //   favorite: [], 
+    //   trailers: []
+    // };
+    // this.http.get<any>(environment.server+'/movies/details/').subscribe(data => {
+    //   // Read the result field from the JSON response.
+    //   output.id=data["id"]; 
+    // });        
+    // return output; 
+    return this.http.get<Movie>(environment.server+'/movies/details/');
+  }
+
   getMovieDetails(id: number):Movie{
     let output:Movie={
       id: -1,

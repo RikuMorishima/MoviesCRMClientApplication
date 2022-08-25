@@ -6,6 +6,7 @@ import {
 } from '@angular/router';
 import { StringOrNumberOrDate } from '@swimlane/ngx-charts';
 import { Observable, of } from 'rxjs';
+import { Movie } from '../interfaces/movies';
 import { MovieService } from '../shared/models/movie.service';
 
 export interface IMovieDetails {
@@ -30,11 +31,11 @@ export interface IMovieDetails {
 @Injectable({
   providedIn: 'root'
 })
-export class DetailsResolver implements Resolve<IMovieDetails> {
+export class DetailsResolver implements Resolve<Movie> {
 
   constructor(private movieService:MovieService){}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IMovieDetails> {
-    return this.movieService.getMovieDetails();
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Movie> {
+    return this.movieService.getAllMovies();
   }
 }
