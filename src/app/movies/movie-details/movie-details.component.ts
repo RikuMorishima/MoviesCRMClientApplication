@@ -22,42 +22,57 @@ export class MovieDetailsComponent implements OnInit {
   movieRatingColor: Record<string,boolean> = {};
 
   ngOnInit(): void {
-    this.ar.queryParams.subscribe(data=>{
-      console.log(data["id"]);
-      this.showAll=data['showAll'];
-      if (data["id"]==undefined) {
-        this.showDetails = false;
-        // get movie list
-        let list = this.movieService.getAllMovies().subscribe(data => {
-          data.forEach((movie)=>{
-            let genre = movie.genres;
-            console.log(genre);
-            let genrename='';
-            if (genre.length ==0) {
-              genrename="N/A";
-            } else {
-              genrename=genre[0].genres.name;
-            } 
-            // Read the result field from the JSON response.
-            console.log(movie);
-            let movieDetail:MovieDetails= {
-              id: movie["id"],
-              title: movie["title"],
-              genre: genrename,
-              overview: movie["overview"],
-              cast: '',
-              rating: 8.1
-            }
-            this.movieDetails.push(movieDetail);
-          });        
-        console.log(this.movieDetails);
-        })
-      } else {
-        this.showDetails=true;
+    this.ar.queryParams.subscribe(querydata=>{
+      console.log(querydata["id"]);
+      this.showAll=querydata['showAll'];
+      if(!this.showAll) {
+        // check if movie id exists
+        let movieExists = false;
+        this.movieService.getMovieDetails(querydata["id"]).subscribe((movieData)=>{
+          if (movieData != null) {
+            // insert movie data into model
+            movieExists = true;
+          } else {
+            this.loadAllMovies();
+          }
+        }, (error)=> {
+          console.log(error);
+          this.loadAllMovies();
+        });
 
-        // Get movie details
+      } else {
+        this.loadAllMovies();
       }
     });
+  }
+
+  loadAllMovies() {
+      this.showDetails = false;
+      // get movie list
+      let list = this.movieService.getAllMovies().subscribe(movieList => {
+        movieList.forEach((movie)=>{
+          let genre = movie.genres;
+          console.log(genre);
+          let genrename='';
+          if (genre.length ==0) {
+            genrename="N/A";
+          } else {
+            genrename=genre[0].genres.name;
+          } 
+          // Read the result field from the JSON response.
+          console.log(movie);
+          let movieDetail:MovieDetails= {
+            id: movie["id"],
+            title: movie["title"],
+            genre: genrename,
+            overview: movie["overview"],
+            cast: '',
+            rating: 8.1
+          } 
+        this.movieDetails.push(movieDetail);
+      });        
+      console.log(this.movieDetails);
+    })
   }
 
   setColor(rating:number) {

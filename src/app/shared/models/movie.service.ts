@@ -62,38 +62,38 @@ export class MovieService {
     return this.http.get<Movie[]>(environment.server+'/movies/details/');
   }
 
-  getMovieDetails(id: number):Movie{
-    let output:Movie={
-      id: -1,
-      title: '',
-      overview:'',
-      tagline:'',
-      budget:-1,
-      revenue: -1,
-      imdbUrl:'',
-      tmdbUrl:'',
-      posterUrl:'',
-      backDropUrl:'',
-      originalLanguage:'', 
-      releaseDate:new Date,
-      runtime:-1,
-      price:-1,
-      createdDate:new Date,
-      updatedDate:new Date,
-      createdBy:'',
-      updatedBy:'',
-      casts: [],
-      genres: [],
-      Crews: [],
-      reviews: [],
-      purchases: [], 
-      favorite: [], 
-      trailers: []
-    };
-    this.http.get<Movie>(environment.server+'/movies/details/'+id).subscribe(data => {
-      // Read the result field from the JSON response.
-      output=data;
-    });        
-    return output; 
+  getMovieDetails(id: number){
+    // let output:Movie={
+    //   id: -1,
+    //   title: '',
+    //   overview:'',
+    //   tagline:'',
+    //   budget:-1,
+    //   revenue: -1,
+    //   imdbUrl:'',
+    //   tmdbUrl:'',
+    //   posterUrl:'',
+    //   backDropUrl:'',
+    //   originalLanguage:'', 
+    //   releaseDate:new Date,
+    //   runtime:-1,
+    //   price:-1,
+    //   createdDate:new Date,
+    //   updatedDate:new Date,
+    //   createdBy:'',
+    //   updatedBy:'',
+    //   casts: [],
+    //   genres: [],
+    //   Crews: [],
+    //   reviews: [],
+    //   purchases: [], 
+    //   favorite: [], 
+    //   trailers: []
+    // };
+    // .subscribe(data => {
+    //   // Read the result field from the JSON response.
+    //   output=data;
+    // });        
+    return this.http.get<Movie>(environment.server+'/movies/details/'+id);
   }
 }
