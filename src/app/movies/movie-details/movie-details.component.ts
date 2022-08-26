@@ -29,19 +29,29 @@ export class MovieDetailsComponent implements OnInit {
         this.showDetails = false;
         // get movie list
         let list = this.movieService.getAllMovies().subscribe(data => {
+          data.forEach((movie)=>{
+            let genre = movie.genres;
+            console.log(genre);
+            let genrename='';
+            if (genre.length ==0) {
+              genrename="N/A";
+            } else {
+              genrename=genre[0].genres.name;
+            } 
             // Read the result field from the JSON response.
-            console.log(data);
+            console.log(movie);
             let movieDetail:MovieDetails= {
-              id: data["id"],
-              title: data["title"],
-              genre: data["genres[0]:genres:name"],
-              overview: data["overview"],
+              id: movie["id"],
+              title: movie["title"],
+              genre: genrename,
+              overview: movie["overview"],
               cast: '',
               rating: 8.1
             }
             this.movieDetails.push(movieDetail);
           });        
         console.log(this.movieDetails);
+        })
       } else {
         this.showDetails=true;
 

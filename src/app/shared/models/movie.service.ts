@@ -59,7 +59,7 @@ export class MovieService {
     //   output.id=data["id"]; 
     // });        
     // return output; 
-    return this.http.get<Movie>(environment.server+'/movies/details/');
+    return this.http.get<Movie[]>(environment.server+'/movies/details/');
   }
 
   getMovieDetails(id: number):Movie{

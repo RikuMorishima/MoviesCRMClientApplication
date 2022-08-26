@@ -12,13 +12,13 @@
     <tbody> 
         <tr *ngFor="let m of movieDetails" 
         [ngClass]="{'success': m.rating >= 8,'warning': m.rating < 8 && m.rating > 7,'danger': m.rating <= 7}" >
-            <div *ngIf="filterRating(m.rating); else contentNotFound">
-            <td>{{m.title}}</td>
-            <td>{{m.genre}}</td>
-            <td>{{m.overview | truncate }}</td>
-            <td>{{m.cast}}</td>
-            <td>{{m.rating}}</td>
-            </div>
+
+                <td *ngIf="filterRating(m.rating); else contentNotFound">{{m.title}}</td>
+                <td *ngIf="filterRating(m.rating); else contentNotFound">{{m.genre}}</td>
+                <td *ngIf="filterRating(m.rating); else contentNotFound">{{m.overview | truncate }}</td>
+                <td *ngIf="filterRating(m.rating); else contentNotFound">{{m.cast}}</td>
+                <td *ngIf="filterRating(m.rating); else contentNotFound">{{m.rating}}</td>
+
             <ng-template #contentNotFound></ng-template>
         </tr>
     </tbody>
