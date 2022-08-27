@@ -23,4 +23,45 @@
         </tr>
     </tbody>
 </table>
-<ng-template #showSingleDetail></ng-template>
+<ng-template #showSingleDetail>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img title="moviePoster" src="..." width="200px" height="300px" />
+            </div>
+            <div class="col">
+                <h2>{{_singleMovieDetail.title}}</h2>
+                <div *ngFor="let genre of _singleMovieDetail.genres">
+                    <span class="badge bg-secondary">{{genre.genre.name}}</span>
+                </div>
+                <h6>Overview</h6>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#buyModal">Buy (Insert model)</button>
+                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#reviewModal">Review</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>MovieFacts</h2>
+                <div>Release Date <span class="badge bg-secondary">{{_singleMovieDetail.releaseDate}}</span></div>
+                <div>Run Time <span class="badge bg-secondary">{{_singleMovieDetail.runTime}}</span></div>
+                <hr />
+                <h2>Trailers</h2>
+    
+    
+            </div>
+            <div class="col">
+                <h2>DisplayCasts</h2>
+                <div *ngFor="let cast of _singleMovieDetail.casts">
+                    <img title="a" [title]="cast.cast.name" [src]="cast.cast.tmdbUrl">
+                    <div>{{cast.cast.name}}</div>
+                    <div>{{cast.Character}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

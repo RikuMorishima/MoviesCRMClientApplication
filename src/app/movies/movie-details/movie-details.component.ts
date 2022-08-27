@@ -19,31 +19,37 @@ export class MovieDetailsComponent implements OnInit {
   showDetails:boolean = false;
 
   movieDetails:MovieDetails[] = [];
+  _singleMovieDetail:any;
   movieRatingColor: Record<string,boolean> = {};
 
   ngOnInit(): void {
     this.ar.queryParams.subscribe(querydata=>{
       console.log(querydata["id"]);
       this.showAll=querydata['showAll'];
-      if(!this.showAll) {
+      if(!this.showAll && querydata["id"]!=undefined) {
         // check if movie id exists
         let movieExists = false;
         this.movieService.getMovieDetails(querydata["id"]).subscribe((movieData)=>{
           if (movieData != null) {
             // insert movie data into model
-            movieExists = true;
+            this.showDetails=true;
+            this._singleMovieDetail = movieData;
+            console.log(this._singleMovieDetail);
           } else {
             this.loadAllMovies();
+            this.showDetails = false;
           }
         }, (error)=> {
           console.log(error);
           this.loadAllMovies();
+          this.showDetails = false;
         });
 
       } else {
         this.loadAllMovies();
       }
     });
+    console.log(this.showDetails);
   }
 
   loadAllMovies() {
