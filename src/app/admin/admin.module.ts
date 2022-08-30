@@ -8,13 +8,15 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateCastComponent } from './create-cast/create-cast.component';
 import { CreateMovieComponent } from './create-movie/create-movie.component';
+import { BindMovieCastComponent } from './bind-movie-cast/bind-movie-cast.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CreateCastComponent,
-    CreateMovieComponent
+    CreateMovieComponent,
+    BindMovieCastComponent
   ],
   imports: [
     AdminRoutingModule, 

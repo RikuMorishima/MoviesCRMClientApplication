@@ -5,6 +5,6 @@ export interface Cast {
     name:string,
     gender:string,
     tmdbUrl:string,
-    ProfilePath:string,
-    movies:MovieCast
+    profilePath:string,
+    movies:MovieCast[]
 }

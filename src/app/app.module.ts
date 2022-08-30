@@ -20,6 +20,7 @@ import { ProgressBarInterceptor } from './interceptors/progress-bar.interceptor'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AdminModule } from './admin/admin.module';
+import { NgProgressHttpModule } from "ngx-progressbar/http";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,11 @@ import { AdminModule } from './admin/admin.module';
     FormsModule,    
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    NgProgressModule,
+    NgProgressModule.withConfig({
+      spinnerPosition: "left",
+      color: "#f71cff"
+    }),
+    NgProgressHttpModule,
     
     AdminModule,
     UserModule

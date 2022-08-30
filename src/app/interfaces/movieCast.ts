@@ -2,9 +2,9 @@ import { Cast } from "./cast";
 import { Movie } from "./movies";
 
 export interface MovieCast {
-    MovieId:number,
-    CastId: number,
-    Character:string,
-    MovieRef:Movie,
+    movieId:number,
+    castId: number,
+    character:string,
+    movieRef:Movie,
     cast: Cast
 }

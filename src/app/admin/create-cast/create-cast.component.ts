@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Cast } from 'src/app/interfaces/cast';
+import {MovieCast} from 'src/app/interfaces/movieCast';
+import { CastService } from 'src/app/shared/models/cast.service';
 
 @Component({
   selector: 'app-create-cast',
@@ -8,20 +11,28 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateCastComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:CastService) { }
 
-  createCast = {
+  createCast:Cast = {
     name:'',
     gender:'',
     tmdbUrl:'',
-    profilePath:''
+    profilePath:'',
+    movies:[], 
+    id:0
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
 
   createCastSubmit(createCastForm:NgForm) {
-    if (createCastForm.valid)
+    this.createCast.gender=createCastForm.value.gender;
+    this.createCast.name=createCastForm.value.name;
+    this.createCast.tmdbUrl=createCastForm.value.tmdbUrl;
+    this.createCast.profilePath=createCastForm.value.profilePath;
+    if (createCastForm.valid) {
       console.log(createCastForm.value);
+      this.service.postCasts(this.createCast);
+    }
   }
 }
